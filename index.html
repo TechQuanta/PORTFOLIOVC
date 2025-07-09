@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font: Inter (Tailwind's default, but good to explicitly note if custom fonts were used) -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"> -->
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="flex flex-col items-center md:flex-col">
+            <!-- Profile picture - hidden on mobile -->
+            <div class="w-12 h-12 rounded-full overflow-hidden mb-8 md:block hidden">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/516b830b-bef8-442a-9986-10ab3dbd025b.png" alt="User profile picture" class="w-full h-full object-cover">
+            </div>
+            <!-- Navigation links will be dynamically loaded here -->
+            <div id="navbarNav" class="flex flex-col items-start md:flex-col flex-row justify-around w-full">
+                <!-- Links will be injected by script.js -->
+            </div>
+        </div>
+    </nav>
 
+    <!-- Mobile Menu Button (Hamburger) -->
+    <button id="mobileMenuButton" class="fixed bottom-4 left-4 z-1000 bg-blue-600 text-white p-3 rounded-full shadow-lg md:hidden">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+
+    <!-- Main Content -->
+    <main class="portfolio-content px-6">
+        <!-- Intro Section -->
+        <section id="intro" class="content-section py-16">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 opacity-0 fade-in-left">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b6638592-eabe-4121-a193-1c27984d1e5c.png" alt="Professional developer working in a modern office environment with dual monitors and ergonomic workspace" class="rounded-xl shadow-xl w-full" />
+                </div>
+                <div class="md:w-1/2 opacity-0 fade-in-right">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome to My Portfolio</h1>
+                    <p class="text-lg text-slate-600 mb-8">Hi, I'm a professional web developer specializing in creating modern, responsive web applications with cutting-edge technologies.</p>
+                    <button class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition transform hover:-translate-y-1">Learn More</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="summary" class="content-section py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
+            <div class="max-w-6xl mx-auto px-4">
+                <h2 class="sr-only">My Skills</h2> <!-- Visually hidden heading -->
+                <div id="skillsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Skills will be injected by script.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="content-section py-16">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="max-w-2xl mx-auto text-slate-600">Selection of my recent work and contributions</p>
+                </div>
+                <div id="projectsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Projects will be injected by script.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="content-section py-16 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="section-title">Courses & Certifications</h2>
+                    <p class="max-w-2xl mx-auto text-slate-600">Professional development and continuing education</p>
+                </div>
+                <div id="coursesContainer" class="grid md:grid-cols-3 gap-8">
+                    <!-- Courses will be injected by script.js -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Fixed Contact Button -->
+    <div class="contact-button">
+        <div class="contact-slider" id="contactTrigger">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span class="font-medium">Contact Me</span>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content relative">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">Get In Touch</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" rows="5" class="form-input" placeholder="Your message here..." required></textarea>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition flex items-center justify-center w-auto mt-2 ml-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom Message Modal (replaces alert) -->
+    <div class="modal" id="messageModal">
+        <div class="modal-content relative text-center">
+            <span class="close-modal" id="closeMessageModal">&times;</span>
+            <h3 class="text-xl font-bold mb-4 text-blue-600" id="messageModalTitle"></h3>
+            <p class="text-slate-700 mb-6" id="messageModalBody"></p>
+            <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition" id="messageModalCloseButton">OK</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
