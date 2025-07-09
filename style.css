@@ -1,347 +1,421 @@
-  <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* Custom CSS */
+html {
+    scroll-behavior: smooth; /* Ensure smooth scrolling for anchor links */
+    /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+    overflow-y: scroll; /* Ensure scrollbar is always there but hidden */
+}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
+html::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
 
-        /* Navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+    /* Hide scrollbar for Firefox */
+    scrollbar-width: none;
+}
 
-        .navbar-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+/* Navbar styling (Desktop - Always Visible, Centered, Height fit-content) */
+.navbar {
+    position: fixed;
+    left: 0; /* Always visible on the left */
+    top: 50%; /* Start at 50% from top */
+    transform: translateY(-50%); /* Pull back by half its height for vertical centering */
+    width: 80px; /* Fixed width for the desktop navbar (w-20 in Tailwind) */
+    height: fit-content; /* Height fits its content */
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow:hidden;
+    backdrop-filter: blur(10px);
+    border-radius: 0 25px 25px 0; /* Rounded right corners */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 1rem;
+    color:white;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-        }
+.nav-icon {
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+}
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+.nav-text {
+    opacity: 1; /* Always visible on desktop */
+    position: absolute;
+    left: 60px; /* Position text next to icon */
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    pointer-events: none; /* Allows clicks to pass through */
+    white-space: nowrap; /* Prevents text wrapping */
+    transform: translateX(0); /* Always in view on desktop */
+    transition: none; /* No transition needed as it's always visible */
+}
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+/* Main Content Area */
+.portfolio-content {
+    margin-left: 0; /* Default for mobile */
+    /* On desktop, this will be overridden by the media query */
+}
 
-        .nav-links a:hover {
-            color: #ffd700;
-        }
+@media (min-width: 769px) { /* Apply on desktop and larger screens */
+    .portfolio-content {
+        margin-left: 80px; /* Push content to the right by navbar width */
+        width: calc(100vw - 80px); /* Take full remaining width */
+        max-width: calc(100vw - 80px); /* Ensure it doesn't exceed this width */
+        /* Ensure content is centered within its available space */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center content horizontally */
+    }
+    .content-section > div { /* Apply max-width to inner container for centering */
+        max-width: 100%; /* Default for responsiveness */
+        width: 100%; /* Ensure it takes available width */
+    }
+    /* Specific adjustment for intro section to maintain its layout */
+    #intro > div {
+        max-width: 1024px; /* Example max-width for intro content */
+        width: 100%;
+    }
+}
 
-        /* Main Content */
-        .main-content {
-            margin-top: 80px;
-            padding: 2rem 5%;
-        }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+/* Contact button styling */
+.contact-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100;
+}
 
-        /* Section Styles */
-        .section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            animation: fadeInUp 0.8s ease-out;
-        }
+.contact-slider {
+    background-color: #3b82f6;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    padding: 1rem;
+    width: 56px; /* Initial width for circle */
+    height: 56px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth, bouncy transition */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.contact-slider:hover {
+    background-color: #2563eb;
+    width: 150px; /* Expanded width on hover */
+}
 
-        .section h2 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
+.contact-slider svg {
+    position: absolute; /* Allows span to take up space */
+    transition: all 0.4s ease;
+}
 
-        .section p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
+.contact-slider span {
+    opacity: 0;
+    width: 0; /* Initial width for hidden text */
+    overflow: hidden;
+    transition: all 0.4s ease;
+    white-space: nowrap;
+}
 
-        /* Project Cards */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+.contact-slider:hover svg {
+    animation: waterFloat 2s ease-in-out infinite; /* Apply animation on hover */
+    transform: translateX(-32px); /* Move icon to the left */
+}
 
-        .project-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.contact-slider:hover span {
+    opacity: 1;
+    width: auto; /* Expand text width */
+    padding-left: 24px; /* Space between icon and text */
+    transform: translateX(8px); /* Adjust text position */
+}
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
+@keyframes waterFloat {
+    0%, 100% {
+        transform: translateX(-32px) translateY(0px);
+    }
+    50% {
+        transform: translateX(-32px) translateY(-5px);
+    }
+}
 
-        .project-card h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
+/* Modal styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
 
-        /* Course Section */
-        .course-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
+.modal-content {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    position: relative; /* For positioning close button */
+}
 
-        .course-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
-        }
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #64748b;
+}
 
-        .course-item:hover {
-            transform: scale(1.05);
-        }
+/* Form styling */
+.form-group {
+    margin-bottom: 1.5rem;
+}
 
-        .course-item h3 {
-            color: white;
-            margin-bottom: 0.5rem;
-        }
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #4b5563;
+}
 
-        /* Contact Button */
-        .contact-button-container {
-            position: fixed;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            z-index: 1001;
-        }
+.form-input {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
 
-        .contact-slider {
-            background: linear-gradient(135deg, #ff6b6b, #ffd93d);
-            border-radius: 50px 0 0 50px;
-            padding: 1rem;
-            width: 60px;
-            height: 60px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+.form-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
 
-        .contact-slider:hover {
-            width: 200px;
-            background: linear-gradient(135deg, #ff8a80, #ffeb3b);
-        }
+textarea.form-input {
+    min-height: 120px;
+    resize: vertical;
+}
 
-        .contact-icon {
-            font-size: 1.5rem;
-            color: white;
-            min-width: 28px;
-        }
+/* Sections styling */
+.content-section {
+    padding: 5rem 0; /* Default padding */
+    width: 100%; /* Take full width of its parent (.portfolio-content) */
+    max-width: 100%; /* Ensure responsiveness */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
 
-        .contact-text {
-            color: white;
-            font-weight: bold;
-            margin-left: 1rem;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s ease 0.1s;
-        }
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #1e293b;
+}
 
-        .contact-slider:hover .contact-text {
-            opacity: 1;
-        }
+/* Visually hidden utility for headings like 'Summary' */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+/* Project Card Item */
+.project-card-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column; /* Equivalent to flex-col */
+    /* Project card hover effects */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid transparent; /* Start with transparent border */
+}
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-        }
+.project-card-item:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Stronger shadow */
+    border-color: #3b82f6; /* Blue border on hover */
+}
 
-        .modal-content {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 5% auto;
-            padding: 0;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            animation: modalSlideIn 0.3s ease-out;
-            overflow: hidden;
-        }
+/* Project Image Wrapper */
+.project-image-wrapper {
+    margin-bottom: 1rem; /* Equivalent to mb-4 */
+    overflow: hidden; /* Equivalent to overflow-hidden */
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+}
 
-        @keyframes modalSlideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+/* Project Image */
+.project-image {
+    display: block;
+    width: 100%; /* Equivalent to w-full */
+    height: auto; /* Equivalent to h-auto */
+    object-fit: cover; /* Equivalent to object-cover */
+    transition: transform 0.5s ease; /* Equivalent to transition-transform duration-500 */
+}
 
-        .modal-header {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-        }
+.project-image:hover {
+    transform: scale(1.05); /* Equivalent to hover:scale-105 */
+}
 
-        .modal-header h2 {
-            color: white;
-            margin: 0;
-            font-size: 2rem;
-        }
+/* Project Title */
+.project-title {
+    font-size: 1.25rem; /* Equivalent to text-xl */
+    line-height: 1.75rem; /* Equivalent to text-xl */
+    font-weight: 700; /* Equivalent to font-bold */
+    margin-bottom: 0.5rem; /* Equivalent to mb-2 */
+}
 
-        .close {
-            position: absolute;
-            right: 1rem;
-            top: 1rem;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
+/* Project Description */
+.project-description {
+    color: #475569; /* Equivalent to text-slate-600 (adjust if your slate-600 is different) */
+    margin-bottom: 1rem; /* Equivalent to mb-4 */
+}
 
-        .close:hover {
-            color: #ffd700;
-        }
+/* Project Tag */
+.project-tag {
+    display: inline-block; /* Equivalent to inline-block */
+    background-color: #dbeafe; /* Equivalent to bg-blue-100 (adjust if your blue-100 is different) */
+    color: #2563eb; /* Equivalent to text-blue-600 (adjust if your blue-600 is different) */
+    padding-left: 0.75rem; /* Equivalent to px-3 */
+    padding-right: 0.75rem; /* Equivalent to px-3 */
+    padding-top: 0.25rem; /* Equivalent to py-1 */
+    padding-bottom: 0.25rem; /* Equivalent to py-1 */
+    border-radius: 9999px; /* Equivalent to rounded-full */
+    width: auto; /* Corrected from width-auo */
+    font-size: 0.875rem; /* Equivalent to text-sm */
+    line-height: 1.25rem; /* Equivalent to text-sm */
+    margin-right: 0.5rem; /* Equivalent to mr-2 */
+    white-space: nowrap; /* Prevent tags from wrapping */
+}
 
-        .modal-body {
-            padding: 2rem;
-        }
+.card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    /* Project card hover effects */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid transparent; /* Start with transparent border */
+}
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+.card:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Stronger shadow */
+    border-color: #3b82f6; /* Blue border on hover */
+}
 
-        .form-group label {
-            display: block;
-            color: white;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
+/* Added for project card image hover effect */
+.card img {
+    display: block; /* Ensure image behaves as a block for overflow hidden on parent */
+}
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 1rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
+/* Animation classes for fade-in effects */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
 
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
 
-        .submit-button {
-            background: linear-gradient(135deg, #ff6b6b, #ffd93d);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-        }
+.animated {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+}
 
-        .submit-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .section {
-                padding: 2rem 1rem;
-            }
-            
-            .main-content {
-                padding: 2rem 2%;
-            }
-        }
-    </style>
+/* Responsive adjustments for Navbar (Mobile) */
+@media (max-width: 768px) {
+    .navbar {
+        top: auto; /* Override desktop top position */
+        transform: translateY(100%) scale(0.8); /* Hidden off-screen at bottom, scaled down */
+        left: 0; /* Ensure it stays at left edge on mobile */
+        bottom: 0; /* Stick to bottom */
+        width: 100%; /* Full width on mobile */
+        height: auto; /* Height adapts to content */
+        border-radius: 25px 25px 0 0; /* Rounded top corners */
+        padding: 0.5rem;
+        flex-direction: row; /* Navbar items in a row on mobile */
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+        /* Enhanced transition for a "fascinating" bouncy slide-up */
+        transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.5s ease;
+    }
+
+    /* Active state for mobile navbar */
+    .navbar.is-active {
+        transform: translateY(0) scale(1); /* Slide into view, scale up */
+        opacity: 1; /* Fully opaque */
+    }
+
+    /* Hide profile picture on mobile */
+    .navbar .w-12.h-12 {
+        display: none;
+    }
+
+    /* Hide nav text on mobile */
+    .nav-text {
+        display: none;
+    }
+
+    /* Adjust main content margin for mobile, considering the bottom navbar */
+    .portfolio-content {
+        margin-left: 0; /* Remove desktop left margin */
+        padding-bottom: 6rem; /* Add padding to prevent content being hidden by fixed navbar */
+        width: 100vw; /* Full viewport width on mobile */
+        max-width: 100vw; /* Ensure it doesn't exceed viewport width */
+    }
+
+    /* Adjust contact button position for mobile, above the navbar */
+    .contact-button {
+        bottom: 6rem; /* Move up to avoid overlapping with mobile navbar */
+        right: 1rem;
+    }
+
+    /* General modal adjustments for mobile */
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+}
