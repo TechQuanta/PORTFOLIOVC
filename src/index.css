@@ -1,0 +1,663 @@
+/*
+ * CSS by the gods: A refined, responsive, and aesthetically superior stylesheet.
+ * ---------------------------------------------------------------------------
+ */
+
+:root {
+    /* Define a sophisticated color palette */
+    --clr-primary: #3b82f6; /* Blue */
+    --clr-primary-dark: #2563eb; /* Dark Blue */
+    --clr-accent: #6ee7b7; /* Subtle Accent Green */
+    --clr-background-light: #f8fafc; /* Light Gray Background */
+    --clr-text-light: #1e293b; /* Dark text */
+    --clr-card-light: #ffffff; /* White Card Background */
+    --clr-border-light: #e2e8f0; /* Light border */
+    --clr-text-muted-light: #475569; /* Slate 600 */
+
+    /* Define Dark Mode variables (default for light mode) */
+    --clr-background-dark: #1a202c; /* Charcoal */
+    --clr-text-dark: #e2e8f0; /* Off-White Text */
+    --clr-card-dark: #2d3748; /* Darker Card Background */
+    --clr-border-dark: #4a5568; /* Gray border */
+    --clr-text-muted-dark: #a0aec0; /* Lighter gray muted text */
+
+    /* Typography scale (fluid sizing) */
+    --font-base: 1rem;
+    --font-lg: clamp(1.1rem, 2vw, 1.25rem);
+    --font-xl: clamp(1.5rem, 3vw, 2rem);
+    --font-2xl: clamp(2rem, 5vw, 3rem);
+
+    /* Shadow definitions */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* * 1. Global Reset and Base Styles 
+ */
+html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}
+
+/* Hide scrollbar elegantly across browsers */
+html::-webkit-scrollbar {
+    display: none;
+}
+body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    /* Use CSS variables for fluid colors based on theme */
+    background-color: var(--clr-background-light);
+    color: var(--clr-text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+    transition: background-color 0.4s ease, color 0.4s ease; /* Smooth theme transitions */
+}
+
+/* * 2. Dark Mode Adaptation (The Divine Touch)
+ */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--clr-background-dark);
+        color: var(--clr-text-dark);
+    }
+
+    .navbar {
+        background-color: rgba(255, 255, 255, 0.08); /* Lighter backdrop for dark mode */
+        color: var(--clr-text-dark);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-link {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .nav-link:hover {
+        color: white;
+    }
+
+    .nav-link.active {
+        color: var(--clr-accent); /* Active state in dark mode */
+    }
+
+    .nav-text {
+        background: var(--clr-card-dark);
+        color: var(--clr-text-dark);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .profile-image-container::before {
+        box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.5); /* Accent color glow in dark mode */
+    }
+    .profile-image-container:hover::before {
+        border-color: var(--clr-accent);
+    }
+
+    .project-card-item,
+    .card {
+        background-color: var(--clr-card-dark);
+        box-shadow: var(--shadow-md);
+    }
+
+    .project-card-item:hover,
+    .card:hover {
+        border-color: var(--clr-accent); /* Accent border on hover in dark mode */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .project-description {
+        color: var(--clr-text-muted-dark);
+    }
+
+    .project-tag {
+        background-color: rgba(110, 231, 183, 0.15);
+        color: var(--clr-accent);
+    }
+
+    .section-title {
+        color: var(--clr-text-dark);
+    }
+    
+    /* Contact button adaptation */
+    .contact-slider {
+        background-color: var(--clr-accent);
+        color: var(--clr-text-dark);
+    }
+    .contact-slider:hover {
+        background-color: #3b82f6; /* Hover to primary color */
+    }
+    
+    .modal-content {
+        background-color: var(--clr-card-dark);
+        color: var(--clr-text-dark);
+    }
+}
+
+/* * 3. Navbar Styling (The Pillar of Navigation) 
+ */
+.navbar {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: fit-content;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px) brightness(1.2); /* Enhanced blur and brightness */
+    border-radius: 0 25px 25px 0;
+    box-shadow: var(--shadow-xl); /* Stronger shadow for floating effect */
+    padding: 1.5rem 1rem;
+    color: white;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0; /* Increased padding */
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--clr-primary);
+    transform: scale(1.1); /* Subtle lift */
+}
+
+.nav-link.active {
+    color: var(--clr-primary);
+}
+
+.nav-icon {
+    transition: all 0.3s ease;
+}
+
+.nav-text {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 65px; /* Adjusting position slightly */
+    background: var(--clr-card-light);
+    color: var(--clr-text-light);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    white-space: nowrap;
+    transform: translateX(10px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+    font-weight: 600;
+}
+
+.nav-link:hover .nav-text {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* * 4. Profile Image (The Astonishing Centerpiece) 
+ */
+.profile-image-container {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    /* Use a gradient ring for the glow */
+    background: linear-gradient(45deg, var(--clr-primary), var(--clr-accent));
+    padding: 3px; /* Padding creates the border effect */
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); /* Soft glow */
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncy transition on image */
+    cursor: pointer;
+    border: 3px solid transparent;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%) contrast(1.1); /* Enhanced desaturation */
+    transition: filter 0.6s ease, transform 0.6s ease;
+    border-radius: 50%; /* Ensure image is perfectly circular inside the container */
+}
+
+.profile-image-container:hover {
+    transform: scale(1.05) rotate(5deg); /* Slight lift and rotation on hover */
+    box-shadow: 0 0 25px var(--clr-primary); /* Intense glow on hover */
+}
+
+.profile-image-container:hover .profile-image {
+    filter: grayscale(0%) contrast(1); /* Full color on hover */
+    transform: scale(1.05); /* Zoom effect */
+}
+
+/* Hide mobile contact icon on desktop */
+.mobile-contact-icon {
+    display: none;
+}
+
+.nav-profile-link .nav-icon {
+    display: none; /* Hide default icon on desktop for profile link */
+}
+
+/* * 5. Main Content and Sections 
+ */
+.portfolio-content {
+    margin-left: 0;
+    transition: margin-left 0.4s ease;
+    padding: 2rem;
+}
+
+.content-section {
+    padding: 6rem 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    /* Centering content within sections */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title {
+    font-size: var(--font-2xl);
+    font-weight: 800;
+    margin-bottom: 3rem;
+    color: var(--clr-text-light);
+    transition: color 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 4px solid var(--clr-primary);
+    padding-bottom: 0.5rem;
+}
+
+/* Visually hidden utility for headings like 'Summary' */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* * 6. Card and Project Styling 
+ */
+.project-card-item,
+.card {
+    background-color: var(--clr-card-light);
+    border-radius: 12px; /* Smoother corners */
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg); /* Deeper shadow */
+    margin-bottom: 2.5rem;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
+    border: 2px solid transparent; /* Start with transparent border */
+    position: relative; /* For pseudo-elements or specific positioning */
+    overflow: hidden;
+}
+
+.project-card-item:hover,
+.card:hover {
+    transform: translateY(-8px) rotate(1deg); /* More pronounced lift and subtle rotation */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    border-color: var(--clr-primary); /* Primary color border on hover */
+}
+
+/* Project Image Wrapper */
+.project-image-wrapper {
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Project Image */
+.project-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.project-image:hover {
+    transform: scale(1.1); /* Enhanced zoom */
+}
+
+/* Project Title and Description */
+.project-title {
+    font-size: var(--font-lg);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--clr-text-light);
+    transition: color 0.4s ease;
+}
+
+.project-description {
+    color: var(--clr-text-muted-light);
+    margin-bottom: 1.5rem;
+    transition: color 0.4s ease;
+}
+
+/* Project Tag */
+.project-tag {
+    display: inline-block;
+    background-color: #dbeafe;
+    color: var(--clr-primary-dark);
+    padding: 0.35rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* * 7. Contact Button and Modal (The Interactive Elements) 
+ */
+.contact-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100;
+}
+
+.contact-slider {
+    background-color: var(--clr-primary);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    padding: 1rem;
+    width: 56px;
+    height: 56px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.contact-slider:hover {
+    background-color: var(--clr-primary-dark);
+    width: 180px; /* Expanded width on hover */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.contact-slider svg {
+    position: absolute;
+    transition: all 0.4s ease;
+}
+
+.contact-slider span {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+/* Water float animation (Subtle and engaging) */
+@keyframes waterFloat {
+    0%, 100% {
+        transform: translateX(-32px) translateY(0px);
+    }
+    50% {
+        transform: translateX(-32px) translateY(-5px);
+    }
+}
+
+.contact-slider:hover svg {
+    animation: waterFloat 2s ease-in-out infinite;
+    transform: translateX(-32px);
+}
+
+.contact-slider:hover span {
+    opacity: 1;
+    width: auto;
+    padding-left: 24px;
+    transform: translateX(8px);
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--clr-card-light);
+    padding: 3rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 550px;
+    box-shadow: var(--shadow-xl);
+    position: relative;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #64748b;
+    transition: color 0.3s ease;
+}
+
+/* Form styling */
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--clr-text-light);
+}
+
+.form-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--clr-border-light);
+    border-radius: 12px;
+    font-size: var(--font-base);
+    transition: all 0.4s ease;
+    background-color: var(--clr-background-light);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--clr-primary);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+textarea.form-input {
+    min-height: 160px;
+    resize: vertical;
+}
+
+/* * 8. Animation Classes 
+ */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animated {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+}
+
+
+/* * 9. Mobile Responsiveness (The Flexible Deity) 
+ */
+@media (min-width: 769px) { 
+    .portfolio-content {
+        margin-left: 80px; /* Push content right by navbar width */
+        width: calc(100vw - 80px); 
+        max-width: calc(100vw - 80px);
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        top: auto;
+        transform: translateY(100%); 
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        border-radius: 25px 25px 0 0;
+        padding: 0.5rem 0;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 -8px 30px rgba(0,0,0,0.2);
+        /* Bouncy slide-up animation for mobile */
+        transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.5s ease;
+    }
+
+    /* Active state for mobile navbar */
+    .navbar.is-active {
+        transform: translateY(0);
+    }
+
+    /* Hide profile image container on mobile */
+    .profile-image-container {
+        display: none;
+    }
+
+    /* Show mobile contact icon on mobile (Phone icon) */
+    .nav-profile-link .mobile-contact-icon {
+        display: block;
+        margin: 0.5rem 0;
+        /* Mobile icons are smaller and closer */
+        transition: none;
+    }
+
+    /* Hide nav text on mobile */
+    .nav-text {
+        display: none;
+    }
+
+    /* Adjust main content padding for mobile */
+    .portfolio-content {
+        margin-left: 0;
+        padding-bottom: 6rem; /* Padding for fixed bottom navbar */
+        width: 100vw;
+        max-width: 100vw;
+    }
+
+    /* Adjust contact button position for mobile, above the navbar */
+    .contact-button {
+        bottom: 6.5rem; 
+        right: 1rem;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .section-title {
+        font-size: var(--font-xl);
+    }
+}
+/* Add this to your existing inro CSS file */
+
+.main-profile-pic-container {
+    width: clamp(120px, 20vw, 200px); /* Fluid size for main profile pic */
+    height: clamp(120px, 20vw, 200px);
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto; /* Center the image */
+    background: linear-gradient(45deg, var(--clr-primary), var(--clr-accent)); /* Same gradient as navbar profile */
+    padding: 5px; /* Thicker border effect */
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6); /* Stronger glow */
+    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smooth, elegant transition */
+}
+
+.main-profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+    filter: grayscale(80%) brightness(1.05); /* Slightly less grayscale than navbar for a different feel */
+    transition: filter 0.6s ease, transform 0.6s ease;
+}
+
+.main-profile-pic-container:hover {
+    transform: scale(1.03) translateY(-5px); /* Gentle lift and slight scale */
+    box-shadow: 0 0 30px var(--clr-primary), 0 0 40px rgba(59, 130, 246, 0.4); /* More intense glow on hover */
+}
+
+.main-profile-pic-container:hover .main-profile-pic {
+    filter: grayscale(0%) brightness(1); /* Full color on hover */
+    transform: scale(1.05); /* Zoom in slightly more */
+}
+
+/* Dark mode adjustments for main profile pic */
+@media (prefers-color-scheme: dark) {
+    .main-profile-pic-container {
+        box-shadow: 0 0 20px rgba(110, 231, 183, 0.6); /* Accent color glow */
+    }
+    .main-profile-pic-container:hover {
+        box-shadow: 0 0 30px var(--clr-accent), 0 0 40px rgba(110, 231, 183, 0.4);
+    }
+}
+
+/* Ensure proper spacing for the content within the profile section */
+.profile-header {
+    text-align: center;
+    margin-bottom: 4rem; /* More space below the header */
+}
+
+/* Specific styling for the intro and summary cards within the profile section */
+#profile .card {
+    max-width: 800px; /* Limit width for better readability */
+    margin-left: auto;
+    margin-right: auto;
+}
