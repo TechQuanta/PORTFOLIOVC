@@ -1,12 +1,13 @@
+// src/router.js
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './layout'; // Assuming layout.jsx is in the same directory as routes.jsx
 
-// Import your page components
-import INTRO from './componant/intro';
-import PROJECTS from './componant/project';
-import EANDE from './componant/eande'; // Education and Experience
-import COURSE from './componant/course';
-import RESUME from './componant/resume'; // Assuming you'll create a resume component
+// Import your page components - ✨ Corrected typo from 'components' to 'components' ✨
+import INTRO from './components/intro.jsx'; // Assuming you move intro.js to src/components/intro.js
+import PROJECTS from './components/project';
+import EANDE from './components/eande'; // Education and Experience
+import COURSE from './components/course';
+// import RESUME from './components/resume'; // Assuming you'll create a resume component
 
 const router = createBrowserRouter([
   {
@@ -29,10 +30,7 @@ const router = createBrowserRouter([
         path: 'courses', // Route for the Courses page
         element: <COURSE />
       },
-      {
-        path: 'resume', // Route for the Resume page
-        element: <RESUME />
-      }
+      // Add more routes here as needed
     ]
   }
 ]);

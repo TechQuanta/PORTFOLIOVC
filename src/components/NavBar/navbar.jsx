@@ -59,7 +59,7 @@ const Navbar = () => {
 
             {/* Projects Icon */}
             <NavLink
-                to="/#projects" // Links to the #projects section
+                to="/projects" // Links to the #projects section
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                 onClick={() => scrollToSection('projects')}
             >
@@ -69,7 +69,7 @@ const Navbar = () => {
 
             {/* Education & Experience Icon */}
             <NavLink
-                to="/#experience" // Links to the #experience section
+                to="/experience" // Links to the #experience section
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                 onClick={() => scrollToSection('experience')}
             >
@@ -79,7 +79,7 @@ const Navbar = () => {
 
             {/* Courses Icon */}
             <NavLink
-                to="/#courses" // Links to the #courses section
+                to="/courses" // Links to the #courses section
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                 onClick={() => scrollToSection('courses')}
             >

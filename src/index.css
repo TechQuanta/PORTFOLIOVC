@@ -1,37 +1,239 @@
+/* src/components/Contact.css */
+/* src/index.css or src/main.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your custom global styles go below these directives */
 /*
  * CSS by the gods: A refined, responsive, and aesthetically superior stylesheet.
  * ---------------------------------------------------------------------------
  */
 
+/* Define CSS Variables for Light and Dark Themes within this component's scope */
+/* These can also be defined globally in a :root selector in a main.css if preferred */
 :root {
-    /* Define a sophisticated color palette */
-    --clr-primary: #3b82f6; /* Blue */
-    --clr-primary-dark: #2563eb; /* Dark Blue */
-    --clr-accent: #6ee7b7; /* Subtle Accent Green */
-    --clr-background-light: #f8fafc; /* Light Gray Background */
-    --clr-text-light: #1e293b; /* Dark text */
-    --clr-card-light: #ffffff; /* White Card Background */
-    --clr-border-light: #e2e8f0; /* Light border */
-    --clr-text-muted-light: #475569; /* Slate 600 */
+  /* Light Mode Colors */
+  --clr-primary: #3b82f6; /* Blue */
+  --clr-primary-dark: #2563eb; /* Dark Blue */
+  --clr-accent: #6ee7b7; /* Subtle Accent Green */
+  --clr-background-light: #f8fafc; /* Light Gray Background */
+  --clr-text-light: #1e293b; /* Dark text */
+  --clr-card-light: #ffffff; /* White Card Background */
+  --clr-border-light: #e2e8f0; /* Light border */
+  --clr-text-muted-light: #475569; /* Slate 600 */
 
-    /* Define Dark Mode variables (default for light mode) */
-    --clr-background-dark: #1a202c; /* Charcoal */
-    --clr-text-dark: #e2e8f0; /* Off-White Text */
-    --clr-card-dark: #2d3748; /* Darker Card Background */
-    --clr-border-dark: #4a5568; /* Gray border */
-    --clr-text-muted-dark: #a0aec0; /* Lighter gray muted text */
+  /* Dark Mode Colors (Default values, overridden by html.dark) */
+  --clr-background-dark: #1a202c; /* Charcoal */
+  --clr-text-dark: #e2e8f0; /* Off-White Text */
+  --clr-card-dark: #2d3748; /* Darker Card Background */
+  --clr-border-dark: #4a5568; /* Gray border */
+  --clr-text-muted-dark: #a0aec0; /* Lighter gray muted text */
 
-    /* Typography scale (fluid sizing) */
-    --font-base: 1rem;
-    --font-lg: clamp(1.1rem, 2vw, 1.25rem);
-    --font-xl: clamp(1.5rem, 3vw, 2rem);
-    --font-2xl: clamp(2rem, 5vw, 3rem);
+  /* Specific colors for messages */
+  --clr-success-bg-light: #d1fae5;
+  --clr-success-text-light: #065f46;
+  --clr-success-border-light: #34d399;
+  --clr-error-bg-light: #fee2e2;
+  --clr-error-text-light: #991b1b;
+  --clr-error-border-light: #ef4444;
 
-    /* Shadow definitions */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  /* Shadow definitions */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Overrides for variables */
+/* This block applies when the <html> tag has the 'dark' class,
+   typically set by JavaScript based on system preference or user toggle. */
+html.dark {
+  --clr-background-light: var(--clr-background-dark); /* Remap light mode variables to dark mode values */
+  --clr-text-light: var(--clr-text-dark);
+  --clr-card-light: var(--clr-card-dark);
+  --clr-border-light: var(--clr-border-dark);
+  --clr-text-muted-light: var(--clr-text-muted-dark);
+
+  /* Dark mode specific colors for messages */
+  --clr-success-bg-light: #10b981; /* Darker green */
+  --clr-success-text-light: #ecfdf5; /* Lighter green text */
+  --clr-success-border-light: #059669;
+  --clr-error-bg-light: #ef4444; /* Darker red */
+  --clr-error-text-light: #fef2f2; /* Lighter red text */
+  --clr-error-border-light: #dc2626;
+}
+
+
+/* Base styles for the contact modal content */
+.contact-modal-content {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--clr-card-light); /* Use variable for background */
+
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+
+  box-sizing: border-box;
+  border: 1px solid var(--clr-border-light); /* Use variable for border */
+  /* Smooth transitions for theme changes */
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  color: var(--clr-text-light); /* Default text color */
+}
+
+/* Close button styling */
+.close-modal-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--clr-text-muted-light); /* Muted color */
+  transition: color 0.2s ease, transform 0.2s ease;
+  padding: 0; /* Remove default button padding */
+  line-height: 1; /* Ensure proper vertical alignment */
+}
+
+.close-modal-button:hover {
+  color: #e53e3e; /* Red on hover (can be a specific error color variable if needed) */
+  transform: rotate(90deg); /* Spin on hover */
+}
+
+/* Titles and subtitles */
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: var(--clr-text-light); /* Use variable for title color */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.contact-subtitle {
+  font-size: 1.1rem;
+  color: var(--clr-text-muted-light); /* Use variable for subtitle color */
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--clr-text-light); /* Use variable for label color */
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--clr-border-light); /* Use variable for border */
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--clr-background-light); /* Use variable for input background */
+  color: var(--clr-text-light); /* Use variable for input text color */
+  /* Smooth transitions for theme changes and focus effects */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--clr-primary); /* Use primary color for focus border */
+  /* Dynamic focus glow using color-mix (modern CSS, ensure browser support) */
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--clr-primary) 30%, transparent);
+}
+
+/* Textarea specific adjustments */
+textarea.form-input {
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 100px; /* Minimum height for textarea */
+}
+
+/* Submit button styling */
+.submit-button {
+  width: 100%;
+  /* Background gradient is handled by inline style in React for dynamic theme colors
+     (as seen in Contact.js, where isDarkMode prop is used) */
+  color: white; /* Text color is white on gradient, so keep as is or use a specific var if needed */
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.submit-button:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Submission feedback messages */
+.submit-message {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0; /* Managed by Framer Motion */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.success-message {
+  background-color: var(--clr-success-bg-light);
+  color: var(--clr-success-text-light);
+  border: 1px solid var(--clr-success-border-light);
+}
+
+.error-message {
+  background-color: var(--clr-error-bg-light);
+  color: var(--clr-error-text-light);
+  border: 1px solid var(--clr-error-border-light);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  .contact-modal-content {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+  }
+
+  .contact-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .form-input, .submit-button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+  }
+
+  .close-modal-button {
+    font-size: 1.8rem;
+    top: 10px;
+    right: 10px;
+  }
 }
 
 /* * 1. Global Reset and Base Styles 
