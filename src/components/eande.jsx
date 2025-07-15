@@ -34,34 +34,34 @@ const EducationExperience = ({ isDarkMode }) => {
   ];
 
   // Data for Experience
-  // const experience = [
-  //   {
-  //     id: 1,
-  //     title: "Senior Software Engineer",
-  //     company: "Tech Solutions Inc.",
-  //     years: "Jan 2024 - Present",
-  //     location: "San Francisco, CA",
-  //     responsibilities: [
-  //       "Led development of scalable microservices using Node.js and Kubernetes.",
-  //       "Implemented CI/CD pipelines, reducing deployment time by 30%.",
-  //       "Mentored junior developers and conducted code reviews.",
-  //       "Optimized database queries, improving application performance by 25%."
-  //     ]
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Software Developer",
-  //     company: "Innovate Labs",
-  //     years: "Jul 2022 - Dec 2023",
-  //     location: "Seattle, WA",
-  //     responsibilities: [
-  //       "Developed and maintained responsive user interfaces with React and Redux.",
-  //       "Collaborated with product teams to translate requirements into technical specifications.",
-  //       "Contributed to API design and implementation using Python/Django.",
-  //       "Participated in agile ceremonies and sprint planning."
-  //     ]
-  //   }
-  // ];
+  const experience = [
+    // {
+    //   id: 1,
+    //   title: "Senior Software Engineer",
+    //   company: "Tech Solutions Inc.",
+    //   years: "Jan 2024 - Present",
+    //   location: "San Francisco, CA",
+    //   responsibilities: [
+    //     "Led development of scalable microservices using Node.js and Kubernetes.",
+    //     "Implemented CI/CD pipelines, reducing deployment time by 30%.",
+    //     "Mentored junior developers and conducted code reviews.",
+    //     "Optimized database queries, improving application performance by 25%."
+    //   ]
+    // },
+    // {
+    //   id: 2,
+    //   title: "Software Developer",
+    //   company: "Innovate Labs",
+    //   years: "Jul 2022 - Dec 2023",
+    //   location: "Seattle, WA",
+    //   responsibilities: [
+    //     "Developed and maintained responsive user interfaces with React and Redux.",
+    //     "Collaborated with product teams to translate requirements into technical specifications.",
+    //     "Contributed to API design and implementation using Python/Django.",
+    //     "Participated in agile ceremonies and sprint planning."
+    //   ]
+    // }
+  ];
 
   // Framer Motion variants for section titles
   const titleVariants = {
