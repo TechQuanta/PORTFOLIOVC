@@ -19,40 +19,42 @@ const ProjectsSlider = ({ isDarkMode }) => {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Platform",
-      description: "A full-stack e-commerce application built with React, Node.js, and MongoDB, featuring user authentication, product catalog, shopping cart, and a seamless checkout process. Designed for scalability and an intuitive user experience.",
-      imageUrl: "https://placehold.co/800x500/C0C0C0/333333?text=E-commerce+Platform",
+      title: " Resume Builder",
+      description: "Resume Builder A Java Spring Boot and React-based project featuring integrated cloud capabilities. It offers a variety of resume templates, a built-in chatbot, project suggestions tailored for students, and an ATS (Applicant Tracking System) score checker with in-depth analysis. The platform also includes intelligent template selection based on defined criteria with project fetching facility.",
+      imageUrl: "./Ace.jpg", // Placeholder image
+      // liveLink: "https://your-ecommerce-platform.com", // Replace with actual live
       liveLink: "#", // Replace with actual live link
       githubLink: "https://github.com/yourusername/ecommerce-platform", // Replace with actual GitHub link
       tags: ["React", "Node.js", "MongoDB", "Tailwind CSS", "Stripe API"]
     },
     {
       id: 2,
-      title: "Real-time Chat Application",
-      description: "Experience instant communication with this real-time chat application. Built with WebSockets (Socket.IO) for lightning-fast message delivery, supporting private and group conversations, and user presence indicators.",
-      imageUrl: "https://placehold.co/800x500/A0A0A0/333333?text=Chat+App",
-      liveLink: "#",
+      title: "Real-time code compiler",
+      description: " A real-time code compiler application that allows users to write, compile, and execute code in various programming languages. It features a user-friendly interface, syntax highlighting, and instant feedback on code execution. Built with React, API, and Webpack.  ",
+      imageUrl: "./compiler.png", // Placeholder image
+      liveLink: "https://codecompiler-pearl.vercel.app/", // Replace with actual live link
+      // githubLink: "
       githubLink: "https://github.com/yourusername/realtime-chat-app",
-      tags: ["React", "Socket.IO", "Express.js", "WebSockets", "User Auth"]
+      tags: ["React and Vite", "Tailwind CSS", "Judge0 CE", "Monaco", "User Auth"]
     },
-    {
-      id: 3,
-      title: "Interactive Portfolio Website",
-      description: "This very portfolio website! A testament to modern web development, crafted with React, styled with Tailwind CSS, and animated with Framer Motion. It's designed to be clean, responsive, and performant across all devices.",
-      imageUrl: "https://placehold.co/800x500/808080/333333?text=Portfolio+Website",
-      liveLink: "#",
-      githubLink: "https://github.com/yourusername/portfolio-website",
-      tags: ["React", "Tailwind CSS", "Framer Motion", "Responsive Design", "UI/UX"]
-    },
-    {
-      id: 4,
-      title: "Advanced Task Management Tool",
-      description: "Boost your productivity with this collaborative task management solution. Features include intuitive drag-and-drop task reordering, user assignment, due date tracking, and real-time updates for team collaboration.",
-      imageUrl: "https://placehold.co/800x500/606060/333333?text=Task+Manager",
-      liveLink: "#",
-      githubLink: "https://github.com/yourusername/task-management-tool",
-      tags: ["React", "Firebase", "Drag-and-Drop", "State Management", "Authentication"]
-    }
+    // {
+    //   id: 3,
+    //   title: "Interactive Portfolio Website",
+    //   description: "This very portfolio website! A testament to modern web development, crafted with React, styled with Tailwind CSS, and animated with Framer Motion. It's designed to be clean, responsive, and performant across all devices.",
+    //   imageUrl: "https://placehold.co/800x500/808080/333333?text=Portfolio+Website",
+    //   liveLink: "#",
+    //   githubLink: "https://github.com/yourusername/portfolio-website",
+    //   tags: ["React", "Tailwind CSS", "Framer Motion", "Responsive Design", "UI/UX"]
+    // },
+    //{
+    //   id: 4,
+    //   title: "Advanced Task Management Tool",
+    //   description: "Boost your productivity with this collaborative task management solution. Features include intuitive drag-and-drop task reordering, user assignment, due date tracking, and real-time updates for team collaboration.",
+    //   imageUrl: "https://placehold.co/800x500/606060/333333?text=Task+Manager",
+    //   liveLink: "#",
+    //   githubLink: "https://github.com/yourusername/task-management-tool",
+    //   tags: ["React", "Firebase", "Drag-and-Drop", "State Management", "Authentication"]
+    // }
   ];
 
   // State to keep track of the currently displayed project index

@@ -19,14 +19,14 @@ const EducationExperience = ({ isDarkMode }) => {
   const education = [
     {
       id: 1,
-      degree: "Master of Computer Science",
+      degree: "Master of Computer Applications",
       institution: "School of Computer Science and IT, University of DAVV Indore (M.P.)",
       years: "2024 - 2025",
       details: "Specialized in Artificial Intelligence and Machine Learning. Thesis on 'Optimizing Neural Networks with Quantum Computing principles'."
     },
     {
       id: 2,
-      degree: "Bachelor of Computer Science",
+      degree: "Bachelor of Computer Applications",
       institution: "Govt. (Model, Autonomous) Holkar Science Collage Indore (M.P.)",
       years: "2021 - 2024",
       details: "Graduated with honors. Focused on full-stack web development and data structures. Participated in numerous hackathons."

@@ -38,11 +38,11 @@ const App = () => {
             transforming complex problems into elegant solutions with a keen eye for user experience.
           </p>
           {/* Action button section */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-6">
+          {/* <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-6">
             <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
               View My Work
             </button>
-          </div>
+          </div> */}
 
           {/* Social Media Icons */}
           {/* Icons with system-dependent colors and hover effects */}
