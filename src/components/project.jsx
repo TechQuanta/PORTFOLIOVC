@@ -155,7 +155,7 @@ const ProjectsSlider = ({ isDarkMode }) => {
         className={`relative w-full max-w-7xl mx-auto overflow-hidden rounded-3xl shadow-2xl transition-colors duration-300 p-6 md:p-10 lg:p-12
         ${isDarkMode ? 'bg-gray-800' : 'bg-white'}
         ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}
-        min-h-[550px] md:min-h-[600px] lg:min-h-[600px]`} // Added min-height to prevent elongation
+        min-h-[1000px] md:min-h-[600px] lg:min-h-[600px]`} // Added min-height to prevent elongation
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}

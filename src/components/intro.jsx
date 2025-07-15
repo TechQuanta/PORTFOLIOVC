@@ -14,7 +14,7 @@ const App = () => {
         {/* Gradient background for the image section, with rounded corners */}
         <div className="md:w-1/4 p-6 flex items-center justify-center bg-transparent rounded-l-2xl md:rounded-tr-none rounded-t-2xl">
           <img
-            src="https://avatars.githubusercontent.com/u/125592050?s=96&v=4" // Placeholder image
+            src="./v.jpg" // Placeholder image
             alt="Profile"
             className="rounded-full w-48 h-48 sm:w-64 sm:h-64 object-cover border-4 border-white shadow-lg transition-transform duration-300 hover:scale-105"
             onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x400/CCCCCC/333333?text=Image+Not+Found"; }} // Fallback for image loading errors
@@ -31,10 +31,11 @@ const App = () => {
             A Passionate <span className="text-purple-600 dark:text-purple-400">Software Developer</span>
           </h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base sm:text-lg mb-8">
-            Welcome to my portfolio! I specialize in building robust and scalable web applications
-            with a keen eye for user experience. With expertise in React, Node.js, and cloud
-            technologies, I love turning complex problems into elegant solutions.
-            Let's create something amazing together!
+            A passionate Java Developer driven by a curiosity for crafting robust and scalable applications.
+            My foundation in Object-Oriented Programming, data structures, and algorithms meticulously guides every solution I build.
+            I specialize in developing efficient RESTful APIs using Spring Boot and ensuring seamless data persistence with SQL databases.
+            I also excel in building robust web applications with React, and cloud technologies, 
+            transforming complex problems into elegant solutions with a keen eye for user experience.
           </p>
           {/* Action button section */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-6">
@@ -50,11 +51,11 @@ const App = () => {
                className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300 transform hover:scale-110">
               <Github size={32} /> {/* GitHub Icon */}
             </a>
-            <a href="https://leetcode.com/yourusername" target="_blank" rel="noopener noreferrer"
+            <a href="https://leetcode.com/Choudharyvisha1" target="_blank" rel="noopener noreferrer"
                className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300 transform hover:scale-110">
               <Code size={32} /> {/* LeetCode Icon (using 'Code' as a general coding platform icon) */}
             </a>
-            <a href="https://www.hackerrank.com/yourusername" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.hackerrank.com/Choudharyvishal" target="_blank" rel="noopener noreferrer"
                className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300 transform hover:scale-110">
               <Award size={32} /> {/* HackerRank Icon (using 'Award' for achievements/rankings) */}
             </a>
