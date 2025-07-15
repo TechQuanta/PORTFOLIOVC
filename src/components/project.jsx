@@ -19,13 +19,13 @@ const ProjectsSlider = ({ isDarkMode }) => {
   const projects = [
     {
       id: 1,
-      title: " Resume Builder",
+      title: "AI Resume Builder",
       description: "Resume Builder A Java Spring Boot and React-based project featuring integrated cloud capabilities. It offers a variety of resume templates, a built-in chatbot, project suggestions tailored for students, and an ATS (Applicant Tracking System) score checker with in-depth analysis. The platform also includes intelligent template selection based on defined criteria with project fetching facility.",
       imageUrl: "./Ace.jpg", // Placeholder image
       // liveLink: "https://your-ecommerce-platform.com", // Replace with actual live
-      liveLink: "#", // Replace with actual live link
+      liveLink: "https://aceresume.techquanta.tech/", // Replace with actual live link
       githubLink: "https://github.com/yourusername/ecommerce-platform", // Replace with actual GitHub link
-      tags: ["React", "Node.js", "MongoDB", "Tailwind CSS", "Stripe API"]
+      tags: ["React", "Node.js", "MongoDB", "Tailwind CSS",]
     },
     {
       id: 2,
@@ -37,15 +37,15 @@ const ProjectsSlider = ({ isDarkMode }) => {
       githubLink: "https://github.com/yourusername/realtime-chat-app",
       tags: ["React and Vite", "Tailwind CSS", "Judge0 CE", "Monaco", "User Auth"]
     },
-    // {
-    //   id: 3,
-    //   title: "Interactive Portfolio Website",
-    //   description: "This very portfolio website! A testament to modern web development, crafted with React, styled with Tailwind CSS, and animated with Framer Motion. It's designed to be clean, responsive, and performant across all devices.",
-    //   imageUrl: "https://placehold.co/800x500/808080/333333?text=Portfolio+Website",
-    //   liveLink: "#",
-    //   githubLink: "https://github.com/yourusername/portfolio-website",
-    //   tags: ["React", "Tailwind CSS", "Framer Motion", "Responsive Design", "UI/UX"]
-    // },
+     {
+      id: 3,
+      title: "Auth & Resume Extraction Service",
+      description: " A comprehensive Java Spring Boot application that integrates Google Drive API for resume storage and Gemini API for resume extraction. It features Firebase Authentication for secure user access, PDFBox for PDF manipulation, and a robust backend architecture. This service automates the process of extracting key information from resumes stored in Google Drive, providing a seamless user experience.",
+      imageUrl: "./3rd.jpg", // Placeholder image
+      liveLink: "https://api.techquanta.tech/", // Replace with actual live link
+      githubLink: "https://github.com/yourusername/portfolio-website",
+      tags: ["Java" , "Spring boot" ," Drive API"  ," Gemini API" ," PDFBOX" ," FireBase Auth"]
+    },
     //{
     //   id: 4,
     //   title: "Advanced Task Management Tool",
