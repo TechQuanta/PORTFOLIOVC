@@ -24,8 +24,8 @@ const ContactFormModal = ({ show, onClose, isDarkMode }) => {
     message: '',
   });
 
-  // State for managing form submission status ('success', 'error', or null)
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
+  // State for managing form submission status ('error' for local validation, or null)
+  const [submitStatus, setSubmitStatus] = useState(null); // 'error', null
 
   // Effect to reset form status when the modal is opened/closed
   useEffect(() => {
@@ -49,30 +49,16 @@ const ContactFormModal = ({ show, onClose, isDarkMode }) => {
     }));
   };
 
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
-    setSubmitStatus(null); // Reset status on new submission
-
-    // Basic validation
+  // Handle form submission (now primarily for local validation before Web3Forms handles submission)
+  const handleSubmit = (e) => {
+    // Basic validation before allowing Web3Forms to take over
     if (!formData.name || !formData.email || !formData.message) {
+      e.preventDefault(); // Prevent Web3Forms submission if local validation fails
       setSubmitStatus('error');
       return;
     }
-
-    // Simulate API call (in a real application, you would send this data to a backend API)
-    try {
-      console.log('Form Submitted:', formData);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' }); // Clear form
-
-      // Optionally, close the modal after a short delay for success message to be seen
-      setTimeout(onClose, 2000); // Changed timeout to 2000ms as per request
-
-    } catch (error) {
-      console.error('Submission error:', error);
-      setSubmitStatus('error');
-    }
+    // If validation passes, allow the form to submit to Web3Forms normally.
+    // Web3Forms will handle the actual HTTP POST and redirection.
   };
 
   // Framer Motion variants for form elements animation
@@ -126,14 +112,19 @@ const ContactFormModal = ({ show, onClose, isDarkMode }) => {
           I'd love to hear from you.
         </p>
 
-        {/* Contact form with Framer Motion container animation */}
+        {/* Contact form with Framer Motion container animation, now integrated with Web3Forms */}
         <motion.form
           onSubmit={handleSubmit}
           className="space-y-6" // Default vertical spacing
           variants={containerVariants}
           initial="hidden"
           animate="visible"
+          action="https://api.web3forms.com/submit" // Web3Forms action
+          method="POST" // Web3Forms method
         >
+          {/* Web3Forms Access Key */}
+          <input type="hidden" name="access_key" value="4b56c085-50a4-4416-b67a-8ab111048806" /> {/* REMEMBER TO REPLACE THIS! */}
+
           {/* Container for horizontal fields on medium screens and up */}
           <div className="flex flex-col md:flex-row md:flex-wrap md:justify-between md:gap-y-6 md:gap-x-8">
             {/* Name Input Field */}
@@ -188,23 +179,17 @@ const ContactFormModal = ({ show, onClose, isDarkMode }) => {
             ></textarea>
           </motion.div>
 
-          {/* Form Status Message (success/error) */}
-          {submitStatus === 'success' && (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center text-base font-semibold bg-green-100 dark:bg-green-700 text-green-700 dark:text-green-200 p-3 rounded-lg border border-green-300 dark:border-green-600 mt-6 transition-colors duration-300"
-            >
-              Message sent successfully! Thank you.
-            </motion.p>
-          )}
+          {/* Web3Forms Redirect */}
+          <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+
+          {/* Form Status Message (only for local validation errors) */}
           {submitStatus === 'error' && (
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="text-center text-base font-semibold bg-red-100 dark:bg-red-700 text-red-700 dark:text-red-200 p-3 rounded-lg border border-red-300 dark:border-red-600 mt-6 transition-colors duration-300"
             >
-              Failed to send message. Please try again later.
+              Please fill in all fields.
             </motion.p>
           )}
 

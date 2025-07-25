@@ -1,4 +1,3 @@
-// Courses.jsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, Award, Clock, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'; // Icons for visual appeal
@@ -21,31 +20,41 @@ const Courses = ({ isDarkMode }) => {
   // Sample course data.
   const course = {
     id: 1,
-    title: "Machine Learning Specialization",
-    provider: "DeepLearning.AI (Coursera)",
-    duration: "5 Months",
-    link: "https://www.coursera.org/specializations/machine-learning", // Replace with actual course link
-    details: "Comprehensive specialization covering supervised learning, unsupervised learning, and deep learning techniques, including neural networks and deep learning architectures. This course provided a strong foundation in building and deploying ML models, focusing on practical applications and theoretical understanding.",
+    title: "Complete Java & Spring Boot Developer Course",
+    provider: "TECHQUANTA",
+    duration: "6 Months",
+    link: "https://techquanta.github.io/java-course/", // Replace with actual course link
+    details: "Comprehensive course covering Java programming from beginner to senior level and Spring Boot framework. Master core Java concepts, advanced Java features, and build production-ready web applications, RESTful APIs, and microservices using Spring Boot, Spring Data JPA, Spring Security, and modern development practices. This course provided hands-on experience with real-world projects and industry best practices.",
     syllabus: [
       {
         id: 1,
-        title: "Introduction to Machine Learning",
-        content: "Overview of machine learning, types of learning (supervised, unsupervised, reinforcement), and basic concepts like data preprocessing, feature engineering, and model evaluation."
+        title: "Core Java Fundamentals (Beginner Level)",
+        content: "Java basics including syntax, variables, data types, operators, control structures, loops, arrays, and object-oriented programming concepts like classes, objects, inheritance, polymorphism, encapsulation, and abstraction."
       },
       {
         id: 2,
-        title: "Supervised Learning (Regression & Classification)",
-        content: "Detailed study of linear regression, logistic regression, decision trees, support vector machines (SVMs), and k-nearest neighbors (KNN). Includes practical examples and implementation."
+        title: "Advanced Java Concepts (Intermediate Level)",
+        content: "Exception handling, collections framework, generics, multi-threading, file I/O, serialization, reflection API, annotations, lambda expressions, streams API, and functional programming concepts in Java 8+."
       },
       {
         id: 3,
-        title: "Neural Networks and Deep Learning",
-        content: "Fundamentals of neural networks, activation functions, backpropagation, and introduction to deep learning architectures such as Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs)."
+        title: "Enterprise Java & Design Patterns (Advanced Level)",
+        content: "Design patterns (Singleton, Factory, Observer, etc.), JDBC, servlets, JSP, Maven/Gradle build tools, JUnit testing, logging frameworks, and enterprise application architecture patterns."
       },
       {
         id: 4,
-        title: "Unsupervised Learning & Recommender Systems",
-        content: "Exploration of clustering algorithms (K-Means, hierarchical clustering), dimensionality reduction (PCA), and the principles behind collaborative filtering and content-based recommender systems."
+        title: "Spring Framework & Spring Boot (Senior Level)",
+        content: "Spring core concepts, dependency injection, Spring MVC, Spring Boot auto-configuration, creating REST APIs, Spring Data JPA, Spring Security, microservices architecture, and deployment strategies."
+      },
+      {
+        id: 5,
+        title: "Database Integration & Advanced Topics",
+        content: "Database connectivity with Spring Data JPA, Hibernate ORM, transaction management, caching strategies, working with multiple databases, query optimization, and database migrations."
+      },
+      {
+        id: 6,
+        title: "Production & DevOps (Senior Level)",
+        content: "Application monitoring, logging, error handling, testing strategies (unit, integration, end-to-end), CI/CD pipelines, Docker containerization, cloud deployment (AWS/Azure), and performance optimization."
       }
     ]
   };

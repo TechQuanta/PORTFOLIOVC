@@ -49,7 +49,7 @@ const Layout = () => {
       </main>
 
       {/* Floating Contact Button */}
-      <div className="fixed bottom-6 right-6 z-40">
+      <div className="fixed top-6 right-6 z-40">
         <button
           onClick={() => setShowContactModal(true)}
           className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
