@@ -35,7 +35,7 @@ const ProjectsSlider = ({ isDarkMode }) => {
       liveLink: "https://codecompiler-pearl.vercel.app/", // Replace with actual live link
       // githubLink: "
       githubLink: "https://github.com/yourusername/realtime-chat-app",
-      tags: ["React and Vite", "Tailwind CSS", "Judge0 CE", "Monaco", "User Auth"]
+      tags: ["React and Vite", "Tailwind CSS","Monaco", "User Auth"]
     },
      {
       id: 3,
