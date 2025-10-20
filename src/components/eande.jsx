@@ -130,8 +130,8 @@ const EducationExperience = ({ isDarkMode }) => {
             </div>
           ))}
         </div>
-
-        {/* Experience Section */}
+   
+    {/* Experience Section */}
         <motion.h2
           className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-12 text-center relative pb-4 z-10 bg-gray-100 dark:bg-gray-900 px-4"
           variants={titleVariants}
@@ -196,3 +196,8 @@ const EducationExperience = ({ isDarkMode }) => {
 };
 
 export default EducationExperience;
+
+
+
+
+
