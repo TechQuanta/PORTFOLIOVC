@@ -88,14 +88,15 @@ const Navbar = () => {
             </NavLink>
 
             {/* Resume/PDF Download Icon */}
-            <NavLink
-                to="/#resume" // Links to the #resume section
-                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                onClick={() => scrollToSection('resume')}
+           <a
+                href="https://drive.google.com/file/d/1DCsKKcUkMfew1GG9lAscrDUyb9JQaZA2/view?usp=drive_link"
+                target="_blank" // Opens in a new tab
+                rel="noopener noreferrer" // Security best practice
+                className="nav-link"
             >
                 <FileText size={24} className="nav-icon" />
                 <span className="nav-text">Resume</span>
-            </NavLink>
+            </a>
         </nav>
     );
 };
