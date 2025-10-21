@@ -7,7 +7,7 @@ import { Github, Code, Award, Linkedin } from 'lucide-react';
 const App = () => {
   return (
     // Main container with responsive padding and system-dependent background color
-    <div className="min-h-screen min-w-[100vw] bg-gray-100 dark:bg-gray-900 flex items-center justify-center  font-inter transition-colors duration-300">
+    <div className="min-h-screen min-w-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center  font-inter transition-colors duration-300">
       {/* The main content container, set to take full width up to a max-width of 6xl and centered horizontally. */}
       <div className="flex flex-col md:flex-row w-full max-w-6xl mx-auto">
         {/* Left Section: Image */}

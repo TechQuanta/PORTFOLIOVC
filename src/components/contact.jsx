@@ -1,7 +1,6 @@
-// ContactFormModal.jsx
 import React, { useState, useEffect } from 'react';
 import { X, Send } from 'lucide-react'; // Import icons for close and send buttons
-import { motion } from 'framer-motion'; // Import Framer Motion
+import { motion, AnimatePresence } from 'framer-motion'; // Import Framer Motion
 
 /**
  * ContactFormModal Component
@@ -45,6 +44,7 @@ const ContactFormModal = ({ show, onClose, isDarkMode }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
+      [name]: value,
       [name]: value,
     }));
   };
@@ -95,10 +95,10 @@ const ContactFormModal = ({ show, onClose, isDarkMode }) => {
         exit={{ scale: 0.8, opacity: 0, y: 50 }}    // Exit state: back to initial
         transition={{ duration: 0.4, ease: "easeOut" }} // Smoother transition
       >
-        {/* Close button for the modal */}
+        {/* Close button for the modal - UPDATED */}
         <button
           onClick={onClose} // Call the onClose prop when the button is clicked
-          className="absolute top-5 right-5 text-gray-500 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-all duration-300 transform hover:scale-125 hover:rotate-90 p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+          className="absolute top-2 right-2 text-gray-500 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-all duration-300 transform hover:scale-125 hover:rotate-90 p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 border-2 border-transparent hover:border-red-500"
           aria-label="Close contact form"
         >
           <X size={28} /> {/* Larger X icon for closing */}
